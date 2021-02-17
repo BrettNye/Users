@@ -12,7 +12,6 @@ class UserDAO {
         $user->setFirstName($row["FirstName"]);
         $user->setLastName($row["LastName"]);
         $user->setUsername($row["Username"]);
-        $user->setUserId($row["id"]);
         echo $result->num_rows;
     }
     } else {
