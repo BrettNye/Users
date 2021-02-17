@@ -3,7 +3,7 @@
 <script>
 
     function hello(userid){
-        fetch('http://localhost:8080/cs3620proj/CRUD/users.php?id=' + userid)
+        fetch('https://user-crud.azurewebsites.net/CRUD/users.php?id=' + userid)
         .then(response => response.json())
         .then(
             function (data){
