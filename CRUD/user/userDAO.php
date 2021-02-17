@@ -9,6 +9,7 @@ class UserDAO {
     if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
+        $user->setUserId($row['id']);
         $user->setFirstName($row["FirstName"]);
         $user->setLastName($row["LastName"]);
         $user->setUsername($row["Username"]);
