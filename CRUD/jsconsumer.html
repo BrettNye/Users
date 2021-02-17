@@ -1,0 +1,30 @@
+<h1 id="header1"></h1>
+
+<script>
+
+    function hello(userid){
+        fetch('http://localhost:8080/cs3620proj/CRUD/users.php?id=' + userid)
+        .then(response => response.json())
+        .then(
+            function (data){
+                document.getElementById("firstName").innerHTML = data.FirstName;
+                document.getElementById("lastName").innerHTML = data.LastName;
+                document.getElementById("userName").innerHTML = data.Username;
+            }
+
+        ).catch((error) => {
+            alert("That user does not yet exist")
+                document.getElementById("firstName").innerHTML = "";
+                document.getElementById("lastName").innerHTML = "";
+                document.getElementById("userName").innerHTML = "";
+        });
+    }
+
+</script>
+
+Userid: <input type="text" id="theUserId" />
+<input type="button" value="Get User" onclick="hello(document.getElementById('theUserId').value);" />
+
+<div id="firstName"></div>
+<div id="lastName"></div>
+<div id="userName"></div>
