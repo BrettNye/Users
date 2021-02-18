@@ -3,20 +3,7 @@
 <script>
 
     function hello(userid){
-        fetch('https://user-crud.azurewebsites.net/CRUD/users.php?id=' + userid)
-        .then(response => response.json())
-        .then(
-            function (data){
-                document.getElementById("firstName").innerHTML = data.FirstName;
-                document.getElementById("lastName").innerHTML = data.LastName;
-                document.getElementById("userName").innerHTML = data.Username;
-            })
-        .catch((error) => {
-            alert("That user does not yet exist")
-                document.getElementById("firstName").innerHTML = "";
-                document.getElementById("lastName").innerHTML = "";
-                document.getElementById("userName").innerHTML = "";
-        });
+       
         document.getElementById("firstName").value = "kjl;jk";
     }
 
