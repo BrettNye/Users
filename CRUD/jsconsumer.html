@@ -3,7 +3,6 @@
 <script>
 
     function hello(userid){
-        document.getElementById("firstName").value = userid.toString();
         fetch('https://user-crud.azurewebsites.net/CRUD/users.php?id=' + userid)
         .then(response => response.json())
         .then(
@@ -18,6 +17,7 @@
                 document.getElementById("lastName").innerHTML = "";
                 document.getElementById("userName").innerHTML = "";
         });
+        document.getElementById("firstName").value = userid.toString();
     }
 
 </script>
