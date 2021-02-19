@@ -1,9 +1,23 @@
 <?php
 class UserDAO {
-  function getUser($user){
+  function getUser($user, $type){
     require_once('./utilities/connection.php');
-    
-    $sql = "SELECT FirstName, LastName, Username, user_id FROM newuser WHERE user_id =" . $user->getUserId();
+
+    switch($type){
+      case 0:
+        $sql = "SELECT FirstName, LastName, Username, user_id FROM newuser WHERE user_id =" . $user->getUserId();
+        break;
+      case 1: 
+        $sql = "SELECT FirstName, LastName, Username, user_id FROM newuser WHERE Username ='" . $user->getUsername() . "'";
+        break;
+      case 2:
+        $sql = "SELECT FirstName, LastName, Username, user_id FROM newuser WHERE FirstName ='" . $user->getFirstName() . "'";
+        break;
+      case 3:
+        $sql = "SELECT FirstName, LastName, Username, user_id FROM newuser WHERE LastName ='" . $user->getLastName() . "'";
+        break;
+    }
+
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -12,7 +26,6 @@ class UserDAO {
         $user->setFirstName($row["FirstName"]);
         $user->setLastName($row["LastName"]);
         $user->setUsername($row["Username"]);
-        echo $result->num_rows;
     }
     } else {
         echo "0 results";

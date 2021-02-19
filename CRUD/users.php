@@ -10,7 +10,15 @@
    require_once('./user/user.php');
 
     $user = new user();
-    $user->getUser(2);
+    if(isset($_GET['id'])){
+        $user->getUserByID($_GET['id']);
+    } else if(isset($_GET['un'])){
+        $user->getUserByUsername($_GET['un']);
+    } else if(isset($_GET['fn'])){
+        $user->getUserByFirstName($_GET['fn']);
+    } else if(isset($_GET['ln'])){
+        $user->getUserByLastName($_GET['ln']);
+    }
 
     echo json_encode($user);
 ?>

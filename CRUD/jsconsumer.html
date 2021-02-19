@@ -1,17 +1,93 @@
-<h1 id="header1"></h1>
+<h1 id="header"></h1>
 
 <script>
 
-    function hello(userid){
-       
-        document.getElementById("firstName").value = "kjl;jk";
+    function GetByUser(userid){
+        fetch('http://localhost:80/cs3620proj/CRUD/users.php?id=' + userid)
+        .then(response => response.json())
+        .then(
+            function (data){
+                document.getElementById("firstName").innerHTML = data.first_name;
+                document.getElementById("lastName").innerHTML = data.last_name;
+                document.getElementById("userName").innerHTML = data.username;
+            }
+        ).catch((error) => {
+            alert("That user does not yet exist")
+                document.getElementById("firstName").innerHTML = "";
+                document.getElementById("lastName").innerHTML = "";
+                document.getElementById("userName").innerHTML = "";
+        });
+    }
+
+    function GetByUsername(username){
+        fetch('http://localhost:80/cs3620proj/CRUD/users.php?un=' + username)
+        .then(response => response.json())
+        .then(
+            function (data){
+                document.getElementById("firstName").innerHTML = data.first_name;
+                document.getElementById("lastName").innerHTML = data.last_name;
+                document.getElementById("userName").innerHTML = data.username;
+            }
+        ).catch((error) => {
+            alert("That user does not yet exist")
+                document.getElementById("firstName").innerHTML = "";
+                document.getElementById("lastName").innerHTML = "";
+                document.getElementById("userName").innerHTML = "";
+        });
+    }
+
+    function GetByFirstName(FirstName){
+        fetch('http://localhost:80/cs3620proj/CRUD/users.php?fn=' + FirstName)
+        .then(response => response.json())
+        .then(
+            function (data){
+                document.getElementById("firstName").innerHTML = data.first_name;
+                document.getElementById("lastName").innerHTML = data.last_name;
+                document.getElementById("userName").innerHTML = data.username;
+            }
+        ).catch((error) => {
+            alert("That user does not yet exist")
+                document.getElementById("firstName").innerHTML = "";
+                document.getElementById("lastName").innerHTML = "";
+                document.getElementById("userName").innerHTML = "";
+        });
+    }
+
+    function GetByLastName(LastName){
+        fetch('http://localhost:80/cs3620proj/CRUD/users.php?ln=' + LastName)
+        .then(response => response.json())
+        .then(
+            function (data){
+                document.getElementById("firstName").innerHTML = data.first_name;
+                document.getElementById("lastName").innerHTML = data.last_name;
+                document.getElementById("userName").innerHTML = data.username;
+            }
+        ).catch((error) => {
+            alert("That user does not yet exist")
+                document.getElementById("firstName").innerHTML = "";
+                document.getElementById("lastName").innerHTML = "";
+                document.getElementById("userName").innerHTML = "";
+        });
     }
 
 </script>
 
-User-id: <input type="text" id="userID" />
-<input type="button" value="Get User" onclick="hello(document.getElementById('userID').value);" />
+<label for="userID-input"> Userid: <input type="text" id="userID-input"></label><br>
+<input type="button" value="Get User by id" onclick="GetByUser(document.getElementById('userID-input').value);" />
+<br>
+<br>
+<label for="username-input">Username: <input type="text" id="username-input"></label><br>
+<input type="button" value="Get User by username" onclick="GetByUsername(document.getElementById('username-input').value);" />
+<br>
+<br>
+<label for="firstname-input">First Name: <input type="text" id="firstname-input"></label><br>
+<input type="button" value="Get User by first name" onclick="GetByFirstName(document.getElementById('firstname-input').value);" />
+<br>
+<br>
+<label for="lastname-input">Last Name: <input type="text" id="lastname-input"></label><br>
+<input type="button" value="Get User by lastname" onclick="GetByLastName(document.getElementById('lastname-input').value);" />
 
-<div id="firstName"></div>
-<div id="lastName"></div>
-<div id="userName"></div>
+
+<br><div id="firstName"> </div>
+<div id="lastName"> </div>
+<div id="userName"> </div>
